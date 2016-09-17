@@ -1,0 +1,62 @@
+{
+  "name": "ulkoilukartta",
+  "version": "1.0.0",
+  "description": "Helsinki Metropolitan Cycling and Outdoor Map",
+  "main": "index.html",
+  "config": {
+    "port": 3000
+  },
+  "scripts": {
+    "start": "webpack-dev-server --inline --progress --colors --history-api-fallback --config webpack/development.js",
+    "build": "webpack -p --progress --display-error-details --config webpack/production.js",
+    "lint:js": "./node_modules/.bin/eslint src; exit 0;"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/City-of-Helsinki/cycling-and-outdoor-map.git"
+  },
+  "keywords": [],
+  "author": "Helsinki City",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/City-of-Helsinki/cycling-and-outdoor-map/issues"
+  },
+  "homepage": "https://github.com/City-of-Helsinki/cycling-and-outdoor-map#readme",
+  "dependencies": {
+    "openlayers": "^3.18.2",
+    "proj4": "^2.3.15"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.4.1",
+    "babel-core": "^6.14.0",
+    "babel-eslint": "^6.1.2",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-stage-2": "^6.13.0",
+    "browser-sync": "^2.16.0",
+    "browser-sync-webpack-plugin": "^1.1.2",
+    "css-loader": "^0.25.0",
+    "eslint": "^3.5.0",
+    "eslint-friendly-formatter": "^2.0.6",
+    "eslint-loader": "^1.5.0",
+    "eslint-plugin-html": "^1.5.2",
+    "eslint-plugin-import": "^1.15.0",
+    "exports-loader": "^0.6.3",
+    "file-loader": "^0.9.0",
+    "html-loader": "^0.4.4",
+    "html-webpack-plugin": "^2.22.0",
+    "imports-loader": "^0.6.5",
+    "node-sass": "^3.10.0",
+    "postcss-loader": "^0.13.0",
+    "require-dir": "^0.3.0",
+    "sass-loader": "^4.0.2",
+    "source-map-loader": "^0.1.5",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.2",
+    "webpack-cleanup-plugin": "^0.3.1",
+    "webpack-dev-server": "^1.15.2",
+    "webpack-merge": "^0.14.1"
+  }
+}
