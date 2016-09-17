@@ -1,0 +1,160 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: sans-serif;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+}
+
+.locateButton {
+  position: absolute;
+  right: .5em;
+  bottom: auto;
+  top: 6.0em;
+  left: auto;
+  z-index: 2;
+  width: 31px;
+  height: 31px;
+  background-image: url("~assets/img/locate.png");
+}
+
+.ol-attribution {
+  bottom: 1.2em;
+  z-index: 5;
+}
+
+.ol-zoom {
+  top: .75em;
+  right: .5em;
+  left: auto;
+}
+
+.bottombar {
+  position: absolute;
+  z-index: 4;
+  top: auto;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: #885B9D;
+  color: white;
+  padding: 1px;
+  text-align: center;
+  font-size: small;
+}
+
+.gpxtool {
+  position: absolute;
+  top: auto;
+  left: auto;
+  right: 4em;
+  bottom: 2em;
+  color: red;
+  padding: 3px;
+  font-size: small;
+  font-style: italic;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.vikailmoitus {
+  position: absolute;
+  bottom: auto;
+  right: auto;
+  left: 10em;
+  top: 0.1em;
+  color: red;
+  padding: 3px;
+  font-size: small;
+  background-color: #ffffff;
+  text-decoration: none;
+}
+
+/*.prntool { position: absolute; right: .5em;	bottom:	auto; top: 8.5em; left: auto;	z-index: 2; width: 32px; height: 32px; background-image: url("img/print.png"); }*/
+
+.pyorailyswitcher {
+  position: absolute;
+  top: 3em;
+  left: 1em;
+  right: auto;
+  bottom: auto;
+  z-index: 5;
+}
+
+.ulkoiluswitcher {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  right: auto;
+  bottom: auto;
+  z-index: 5;
+}
+
+.ol-control button {
+  background-color: rgba(0, 127, 255, 0.85);
+  border-radius: 50% !important;
+}
+
+.ol-control button:hover {
+  transform: scale(.9);
+  background-color: rgba(255, 51, 153, 0.85) !important;
+}
+
+.ol-attribution {
+  text-align: left;
+  max-width: calc(100% - 5em)
+}
+
+.ol-popup {
+  position: absolute;
+  min-width: 140px;
+  background-color: white;
+  -webkit-filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+  padding: 3px;
+  border-radius: 10px;
+  border: 3px solid #ccc;
+  bottom: 5px;
+  left: -50px;
+
+  &:before,
+  &:after{
+    top: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  :before {
+    border-top-color: #cccccc;
+    border-width: 11px;
+    left: 48px;
+    margin-left: -11px;
+  }
+
+  &:after {
+    border-top-color: white;
+    border-width: 10px;
+    left: 48px;
+    margin-left: -10px;
+  }
+}
+
+.ol-popup-closer {
+  text-decoration: none;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+
+  &:after {
+    //content: url(data:image/gif;base64,R0lGODlhEAAQAMQcACVCgSVDhCtOmSxPmyhIjSM/eyM/fSZEhSM/fC1Rni1RnyRBgCdHiytNmCVDgypMlihIjixPnCtNlypMlSlLkydGiilKkSlKkCRBfyZFiCZEhv///wAAAAAAAAAAAAAAACH5BAEAABwALAAAAAAQABAAAAVxIAddFjU9UiMMUZQoCkOM5Zmu7VvJtImqLFdmNyP5bqyEZsjYbIwTJzCiWVacTwsWGThkhlisTeXoWsO1H6C8zIShqMW6G3bCMZg1Fmyv4eVOVXw9CAZ4c4JENAWFh2xWPBcFjIZ5j0wzHJONlmZMHCEAOw==);
+  }
+}
