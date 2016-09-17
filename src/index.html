@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+  <title>Pääkaupunkiseudun Pyöräily- ja Ulkoilukartta</title>
+</head>
+<body>
+<div id="map" class="map"></div>
+
+<div class="pyorailyswitcher" onclick="layerSwitch('pk');">
+  <img src="~assets/img/pyorailykartta-layer.png">
+</div>
+
+<div class="ulkoiluswitcher" onclick="layerSwitch('uk');">
+  <img src="~assets/img/ulkoilukartta-layer.png">
+</div>
+
+<div id="popup" title=""></div>
+
+<div class="locateButton" onclick="setGeoLocation()"></div>
+<!--
+  <div id="search" style="position: absolute; top: .75em; right: 20em; padding: 5px; background-color: rgba(255,255,255,0.5);">
+    <input type="text" placeholder="katunimihaku" style="width: 200px">
+    <button type="button">Hae</button>
+  </div>
+-->
+<div class="vikailmoitus">Mittaustoiminnot ovat toistaiseksi pois käytöstä -Ulkoilukartan ylläpito</div>
+
+<a id="export-gpx" class="gpxtool" download="map.gpx">GPX</a>
+<a id="export-png" class="prntool" download="map.png"></a>
+
+<div class="bottombar">
+  PÄÄKAUPUNKISEUDUN PYÖRÄILY- JA ULKOILUKARTTA 2016 |
+  HELSINKI METROPOLITAN CYCLING AND OUTDOOR MAP |
+  HUVUDSTADSREGIONENS CYKEL- OCH FRILUFTSKARTA
+</div>
+
+<div id="search" class="ol-popup">
+  <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+  <div id="popup-content"></div>
+</div>
+
+</body>
+</html>
