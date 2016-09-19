@@ -23,6 +23,19 @@ html, body {
   background-image: url("~assets/img/locate.png");
 }
 
+.measureButton {
+  position: absolute;
+  right: 0.5em;
+  bottom: auto;
+  top: 8em;
+  left: auto;
+  z-index: 2;
+  width: 85px;
+  height: 60px;
+  background: white;
+  //background-image: url("~assets/img/locate.png");
+}
+
 .ol-attribution {
   bottom: 1.2em;
   z-index: 5;
