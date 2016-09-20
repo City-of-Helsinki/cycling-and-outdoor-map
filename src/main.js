@@ -160,3 +160,6 @@ closer.onclick = function() {
 Map.addOverlay(overlay);
 
 window.toggleMeasuring = toggleMeasuring;
+
+//Updates map size to correct after rendering
+setTimeout(function(){ Map.updateSize(); }, 100);

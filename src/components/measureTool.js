@@ -43,14 +43,16 @@ var source = new ol.source.Vector();
 
 var pointerMoveHandler = function(evt) {
 
-  if (evt.dragging || !measuringEnabled) {
+  if (!measuringEnabled) {
     var helpMsg = '';
     helpTooltipElement.innerHTML = helpMsg;
     return;
   }
+  if (evt.dragging) {
+    return;
+  }
   /** @type {string} */
   helpMsg = 'Klikkaa uusi matkanmittaus käyntiin';
-  //var helpMsg = '';
 
   if (sketch) {
     helpMsg = continueLineMsg;
@@ -118,8 +120,8 @@ function createMeasureTooltip() {
   measureTooltipElement.className = 'tooltip tooltip-measure';
   measureTooltip = new ol.Overlay({
     element: measureTooltipElement,
-    offset: [0, -15],
-    positioning: 'bottom-center'
+    offset: [0, -45],
+    positioning: 'center-center'
   });
   Map.addOverlay(measureTooltip);
 }
@@ -129,7 +131,6 @@ function initInteraction(){
   var type = ('LineString');
   draw = new ol.interaction.Draw({
     source: source,
-    finishCondition: function() {return false;},
     type: /** @type {ol.geom.GeometryType} */ (type),
     style: new ol.style.Style({
       fill: new ol.style.Fill({
@@ -143,10 +144,10 @@ function initInteraction(){
       image: new ol.style.Circle({
         radius: 5,
         stroke: new ol.style.Stroke({
-          color: 'rgba(255, 186, 0, 1)'
+          color: 'rgba(255, 0, 0, 1)'
         }),
         fill: new ol.style.Fill({
-          color: 'rgba(255, 255, 255, 0.2)'
+          color: 'rgba(255, 0, 0, 1)'
         })
       })
     })
@@ -161,6 +162,7 @@ function initInteraction(){
     function(evt) {
       // set sketch
       sketch = evt.feature;
+
       /** @type {ol.Coordinate|undefined} */
       var tooltipCoord = evt.coordinate;
       listener = sketch.getGeometry().on('change', function(e) {
@@ -177,7 +179,7 @@ function initInteraction(){
     function() {
       /* Matkanmittauksen infoboxin asemointi! */
       measureTooltipElement.className = 'tooltip tooltip-static';
-      measureTooltip.setOffset([0, -30]);
+      measureTooltip.setOffset([0, -80]);
       // unset sketch
       sketch = null;
       // unset tooltip so that a new one can be created
