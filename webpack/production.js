@@ -23,10 +23,6 @@ module.exports = merge(webpackBase, {
     }),
     new WebpackCleanupPlugin(),
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      compressor: {
-        warnings: false
-      }
-    })
+    new webpack.optimize.UglifyJsPlugin()
   ]
 });
