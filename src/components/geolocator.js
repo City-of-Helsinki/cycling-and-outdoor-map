@@ -1,4 +1,5 @@
 import ol from 'openlayers';
+import walkImg from 'assets/img/walk32.png';
 
 export const setGeoLocation = () => {
   const geolocation = new ol.Geolocation({
