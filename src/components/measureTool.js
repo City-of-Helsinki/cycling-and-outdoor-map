@@ -214,10 +214,13 @@ initInteraction();
 
 var measuringEnabled = false;
 
-export var toggleMeasuring = function() {
+export const toggleMeasuring = function() {
   if (!measuringEnabled) {
     measuringEnabled = true;
     Map.addInteraction(draw);
+    document.getElementById('clearButton').style.display = 'inline';
+    document.getElementById('measureButton').style.background = 'yellow';
+    document.getElementById('measureButton').innerHTML = 'Lopeta mittaus';
 
   } else {
     measuringEnabled = false;
@@ -225,5 +228,16 @@ export var toggleMeasuring = function() {
       draw.finishDrawing();
     }
     Map.removeInteraction(draw);
+    document.getElementById('clearButton').style.display = 'none';
+    document.getElementById('measureButton').style.background = 'lightblue';
+    document.getElementById('measureButton').innerHTML = 'Mittaustyökalu';
+  }
+};
+
+export const clearRoutes = function() {
+  source.clear();
+  var elementsToRemove = document.getElementsByClassName('tooltip-static');
+  for (var i = 0; i < elementsToRemove.length; i++) {
+    elementsToRemove[i].remove();
   }
 };

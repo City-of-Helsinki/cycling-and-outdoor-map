@@ -33,11 +33,30 @@ html, body {
   padding: 10px 0 0 5px;
   width: 110px;
   height: 30px;
-  background: white;
+  background: lightblue;
   cursor: pointer;
   box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
   border-radius: 6px;
   border: 1px solid #000000;
+  //background-image: url("~assets/img/locate.png");
+}
+
+.clearButton {
+  position: absolute;
+  right: 0.5em;
+  bottom: auto;
+  top: 12em;
+  left: auto;
+  z-index: 2;
+  padding: 10px 0 0 5px;
+  width: 110px;
+  height: 30px;
+  background: salmon;
+  cursor: pointer;
+  box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
+  border-radius: 6px;
+  border: 1px solid #000000;
+  display: none;
   //background-image: url("~assets/img/locate.png");
 }
 

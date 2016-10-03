@@ -125,7 +125,8 @@ if ('download' in exportGPXElement) {
 const geocoder = new Geocoder('nominatim', {
   provider: 'kmo',
   placeholder: 'Etsi katunimellä ...',
-  keepOpen: true
+  keepOpen: true,
+  autoComplete: true
 });
 
 Map.addControl(geocoder);
@@ -160,6 +161,7 @@ closer.onclick = function() {
 Map.addOverlay(overlay);
 
 window.toggleMeasuring = toggleMeasuring;
+window.clearRoutes = clearRoutes;
 
 //Updates map size to correct after rendering
 setTimeout(function(){ Map.updateSize(); }, 100);
