@@ -1,0 +1,35 @@
+import ol from 'openlayers';
+
+export const setGeoLocation = () => {
+  const geolocation = new ol.Geolocation({
+    tracking: true,
+    projection
+  });
+  const iconStyle = new ol.style.Style({
+    image: new ol.style.Icon(({
+      anchor: [0.5, 15],
+      anchorXUnits: 'fraction',
+      anchorYUnits: 'pixels',
+      opacity: 1,
+      src: walkImg
+    }))
+  });
+
+  const accuracyFeature = new ol.Feature();
+  const positionFeature = new ol.Feature();
+
+  positionFeature.setStyle(iconStyle);
+
+  let locationCoordinates = geolocation.getPosition();
+  Map.getView().setCenter(locationCoordinates);
+  Map.getView().setZoom(5);
+  positionFeature.setGeometry(locationCoordinates ? new ol.geom.Point(locationCoordinates) : null);
+  new ol.layer.Vector({
+    map: Map,
+    source: new ol.source.Vector({
+      features: [accuracyFeature, positionFeature]
+    })
+  });
+
+  setTimeout(function(){ Map.updateSize(); }, 100);
+};

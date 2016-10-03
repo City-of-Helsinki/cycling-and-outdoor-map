@@ -5,7 +5,8 @@ import Geocoder from './lib/geocoder';
 import distanceCalculator from './components/distanceCalculator';
 import projection from './components/projection';
 import { Map, layerSwitch } from './components/map';
-import { toggleMeasuring } from './components/measureTool';
+import { toggleMeasuring, clearRoutes } from './components/measureTool';
+import { setGeoLocation } from './components/geolocator';
 
 import './main.scss';
 import walkImg from 'assets/img/walk32.png';
@@ -21,7 +22,7 @@ Map.addOverlay(new ol.Overlay({
 /**
  * Geolocation
  */
-const setGeoLocation = () => {
+/*const setGeoLocation = () => {
   const iconStyle = new ol.style.Style({
     image: new ol.style.Icon(({
       anchor: [0.5, 15],
@@ -44,12 +45,12 @@ const setGeoLocation = () => {
   geolocation.on('change:accuracyGeometry', function() {
     accuracyFeature.setGeometry(geolocation.getAccuracyGeometry());
   });
-
   if (window.navigator.geolocation) {
     geolocation.on('change:position', function() {
       let locationCoordinates = geolocation.getPosition();
+      console.log(locationCoordinates);
       Map.getView().setCenter(locationCoordinates);
-      Map.getView().setZoom(14);
+      Map.getView().setZoom(10);
       positionFeature.setGeometry(locationCoordinates ? new ol.geom.Point(locationCoordinates) : null);
     });
     new ol.layer.Vector({
@@ -59,7 +60,9 @@ const setGeoLocation = () => {
       })
     });
   }
-};
+
+  setTimeout(function(){ Map.updateSize(); }, 100);
+};*/
 
 // Expose to window
 window.setGeoLocation = setGeoLocation;
