@@ -235,9 +235,13 @@ export const toggleMeasuring = function() {
 };
 
 export const clearRoutes = function() {
-  source.clear();
   var elementsToRemove = document.getElementsByClassName('tooltip-static');
-  for (var i = 0; i < elementsToRemove.length; i++) {
-    elementsToRemove[i].remove();
+
+  while (elementsToRemove.length > 0) {
+    elementsToRemove[0].remove();
+    console.log('removed');
   }
+
+  source.clear();
+
 };
