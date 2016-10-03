@@ -178,6 +178,8 @@ function initInteraction(){
   createHelpTooltip();
 
   var listener;
+  var clickListener;
+  var northernMost = [0, -100000000];
 
   draw.on('drawstart',
     function(evt) {
@@ -194,19 +196,29 @@ function initInteraction(){
         measureTooltipElement.innerHTML = output;
         measureTooltip.setPosition(tooltipCoord);
       });
+      clickListener = Map.on('click', function(e) {
+
+        if (e.coordinate[1] > northernMost[1]) {
+          northernMost = e.coordinate;
+        }
+        console.log(northernMost);
+      });
     }, this);
 
   draw.on('drawend',
     function() {
       /* Matkanmittauksen infoboxin asemointi! */
+      measureTooltip.setPosition(northernMost);
       measureTooltipElement.className = 'tooltip tooltip-static';
       measureTooltip.setOffset([0, -80]);
       // unset sketch
       sketch = null;
       // unset tooltip so that a new one can be created
       measureTooltipElement = null;
+      northernMost = [0, -100000000];
       createMeasureTooltip();
       ol.Observable.unByKey(listener);
+      ol.Observable.unByKey(clickListener);
     }, this);
 }
 
