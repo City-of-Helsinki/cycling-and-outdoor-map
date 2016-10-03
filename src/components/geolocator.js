@@ -1,6 +1,6 @@
 import ol from 'openlayers';
 import walkImg from 'assets/img/walk32.png';
-//import projection from './projection';
+import projection from './projection';
 import { Map } from './map';
 
 let lastIcon;
