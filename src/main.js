@@ -8,8 +8,9 @@ import { Map, layerSwitch } from './components/map';
 import { toggleMeasuring, clearRoutes } from './components/measureTool';
 import { setGeoLocation } from './components/geolocator';
 
+//import walkImg from 'assets/img/walk32.png';
+
 import './main.scss';
-import walkImg from 'assets/img/walk32.png';
 
 /**
  * Popup
@@ -48,7 +49,6 @@ Map.addOverlay(new ol.Overlay({
   if (window.navigator.geolocation) {
     geolocation.on('change:position', function() {
       let locationCoordinates = geolocation.getPosition();
-      console.log(locationCoordinates);
       Map.getView().setCenter(locationCoordinates);
       Map.getView().setZoom(10);
       positionFeature.setGeometry(locationCoordinates ? new ol.geom.Point(locationCoordinates) : null);
