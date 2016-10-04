@@ -4,12 +4,15 @@ import projection from './projection';
 import { Map } from './map';
 
 let lastIcon;
+let geolocation;
 
 export const setGeoLocation = () => {
-  const geolocation = new ol.Geolocation({
+
+  geolocation = new ol.Geolocation({
     tracking: true,
     projection: projection
   });
+
   const iconStyle = new ol.style.Style({
     image: new ol.style.Icon(({
       anchor: [0.5, 15],
@@ -25,22 +28,24 @@ export const setGeoLocation = () => {
 
   positionFeature.setStyle(iconStyle);
 
-  let locationCoordinates = geolocation.getPosition();
-  console.log(geolocation());
-  console.log(geolocation.a);
-  console.log(locationCoordinates);
-  Map.getView().setCenter(locationCoordinates);
-  Map.getView().setZoom(5);
-  positionFeature.setGeometry(locationCoordinates ? new ol.geom.Point(locationCoordinates) : null);
-  removeLastIcon();
-  var vectorLayer = new ol.layer.Vector({
-    map: Map,
-    source: new ol.source.Vector({
-      features: [accuracyFeature, positionFeature]
-    })
+  /**
+   * Track changes on geolocation
+   */
+  geolocation.on('change', () => {
+    let locationCoordinates = geolocation.getPosition();
+    Map.getView().setCenter(locationCoordinates);
+    Map.getView().setZoom(5);
+    positionFeature.setGeometry(locationCoordinates ? new ol.geom.Point(locationCoordinates) : null);
+    removeLastIcon();
+    var vectorLayer = new ol.layer.Vector({
+      map: Map,
+      source: new ol.source.Vector({
+        features: [accuracyFeature, positionFeature]
+      })
+    });
+    lastIcon = vectorLayer;
+    Map.addLayer(vectorLayer);
   });
-  lastIcon = vectorLayer;
-  Map.addLayer(vectorLayer);
 
   setTimeout(function(){ Map.updateSize(); }, 100);
 };
