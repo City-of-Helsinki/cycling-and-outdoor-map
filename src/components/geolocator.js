@@ -8,7 +8,7 @@ let lastIcon;
 export const setGeoLocation = () => {
   const geolocation = new ol.Geolocation({
     tracking: true,
-    projection
+    projection: projection
   });
   const iconStyle = new ol.style.Style({
     image: new ol.style.Icon(({
@@ -26,6 +26,9 @@ export const setGeoLocation = () => {
   positionFeature.setStyle(iconStyle);
 
   let locationCoordinates = geolocation.getPosition();
+  console.log(geolocation());
+  console.log(geolocation.a);
+  console.log(locationCoordinates);
   Map.getView().setCenter(locationCoordinates);
   Map.getView().setZoom(5);
   positionFeature.setGeometry(locationCoordinates ? new ol.geom.Point(locationCoordinates) : null);
