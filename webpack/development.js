@@ -32,6 +32,11 @@ module.exports = merge(webpackBase, {
       template: path.resolve(__dirname, '../src/index.html')
     }),
 
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery"
+    }),
+
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()

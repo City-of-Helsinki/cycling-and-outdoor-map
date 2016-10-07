@@ -168,3 +168,7 @@ window.clearRoutes = clearRoutes;
 
 //Updates map size to correct after rendering
 setTimeout(function(){ Map.updateSize(); }, 100);
+
+$('.switcher').click(function() {
+  $('.switcher').toggleClass('active');
+});

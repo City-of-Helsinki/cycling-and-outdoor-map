@@ -231,8 +231,9 @@ export const toggleMeasuring = function() {
     measuringEnabled = true;
     Map.addInteraction(draw);
     document.getElementById('clearButton').style.display = 'inline';
-    document.getElementById('measureButton').style.background = 'yellow';
-    document.getElementById('measureButton').innerHTML = 'Lopeta mittaus';
+    $('#measureButton').addClass('active');
+    //document.getElementById('measureButton').style.background = 'yellow';
+    //document.getElementById('measureButton').innerHTML = 'Lopeta mittaus';
 
   } else {
     measuringEnabled = false;
@@ -241,8 +242,9 @@ export const toggleMeasuring = function() {
     }
     Map.removeInteraction(draw);
     document.getElementById('clearButton').style.display = 'none';
-    document.getElementById('measureButton').style.background = 'lightblue';
-    document.getElementById('measureButton').innerHTML = 'Mittaustyökalu';
+    $('#measureButton').removeClass('active');
+    //document.getElementById('measureButton').style.background = 'lightblue';
+    //document.getElementById('measureButton').innerHTML = 'Mittaustyökalu';
   }
 };
 

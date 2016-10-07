@@ -9,14 +9,16 @@
 <body>
 <div id="map" class="map"></div>
 
-<div class="pyorailyswitcher" onclick="layerSwitch('pk');">
-  <img src="~assets/img/pyorailykartta-layer.png">
+<div class="map-navigation">
+<div class="switcher pyorailyswitcher active" onclick="layerSwitch('pk',this);">
+  Pyöräilyreitit
 </div>
 
-<div class="ulkoiluswitcher" onclick="layerSwitch('uk');">
-  <img src="~assets/img/ulkoilukartta-layer.png">
+<div class="switcher ulkoiluswitcher" onclick="layerSwitch('uk',this);">
+  Ulkoilupaikat
 </div>
-
+</div>
+  
 <div id="popup" class="ol-popup">
   <a href="#" id="popup-closer" class="ol-popup-closer"></a>
   <div id="popup-content"></div>
@@ -36,7 +38,7 @@
 <div class="vikailmoitus">Mittaustoiminnot ovat toistaiseksi pois käytöstä -Ulkoilukartan ylläpito</div>
 
 <a id="export-gpx" class="gpxtool" download="map.gpx">GPX</a>
-<a id="export-png" class="prntool" download="map.png"></a>
+<a id="export-png" class="prntool" download="map.png">PRINT</a>
 
 <div class="bottombar">
   PÄÄKAUPUNKISEUDUN PYÖRÄILY- JA ULKOILUKARTTA 2016 |
@@ -48,6 +50,9 @@
   <a href="#" id="popup-closer" class="ol-popup-closer"></a>
   <div id="popup-content"></div>
 </div>
+
+  <div class="">
+  </div>
 
 </body>
 </html>
