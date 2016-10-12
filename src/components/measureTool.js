@@ -111,7 +111,13 @@ var draw; // global so we can remove it later
  */
 var formatLength = function(line) {
   var length;
-  length = Math.round(line.getLength() * 100) / 100;
+
+  if (line) {
+    length = Math.round(line.getLength() * 100) / 100;
+  } else {
+    length = 0;
+  }
+
   var output;
   /*if (length > 100) {
    output = (Math.round(length / 1000 * 100) / 100) +
@@ -124,7 +130,7 @@ var formatLength = function(line) {
   steps = Math.round(output * (1 / 0.7));
   /* } */
   /*return output + ' m<br>' + steps + ' askelta';*/
-  return steps + ' askelta*<br>' + output + ' m';
+  return '<div class="measure-set measure--meters"><span class="measure-value">' + output + '</span><span class="measure-unit"> m</span></div><div class="measure-set measure--steps">' + '<span class="measure-value">' + steps + '</span><span class="measure-unit"> askelta</span></div>';
 };
 
 /**
@@ -164,7 +170,7 @@ function createMeasureTooltip() {
 
 function updateMeasureDisplay(newContent) {
   if (newContent === '') {
-    $('#measureDisplay').html('0 askelta*<br>0 m');
+    $('#measureDisplay').html(formatLength());
   } else {
     $('#measureDisplay').html(newContent);
   }
