@@ -1,0 +1,255 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 
+    "Segoe UI", "Roboto", "Oxygen", 
+    "Ubuntu", "Cantarell", "Fira Sans", 
+    "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.map {
+  width: 100%;
+  height: 100%;
+}
+
+.map.is-measuring {
+  cursor: crosshair;
+}
+
+.locateButton {
+  position: absolute;
+  right: .5em;
+  bottom: 11em;
+  top: auto;
+  left: auto;
+  z-index: 2;
+  padding: 6px;
+  text-align: center;
+  border-radius: 50%;
+  line-height: 42px;
+  width: 42px;
+  height: 42px;
+  @extend .btn;
+  @extend .btn-primary;
+  .locate-icon {
+    @extend .glyphicon;
+    @extend .glyphicon-screenshot;
+    font-size: 24px;
+  }
+}
+
+.map-tools {
+  position: absolute;
+  right: 0.5em;
+  bottom: auto;
+  top: 1em;
+  left: auto;
+  z-index: 2;
+}
+
+.measureButton {
+  min-width: 120px;
+  @extend .btn;
+  @extend .btn-primary;
+}
+
+.clearButton {
+  min-width: 120px;
+  display: none;
+  //background-image: url("~assets/img/locate.png");
+  @extend .btn;
+  @extend .btn-danger;
+}
+
+.measure-display {
+  @extend .well;
+  @extend .well-sm;
+  display: none;
+  .display-steps {
+    display: block;
+  }
+  .display-distance {
+    display: block;
+  }
+}
+
+.ol-attribution {
+  display: none;
+}
+
+.ol-zoom {
+  bottom: 4em;
+  left: auto;
+  right: .5em;
+  top: auto;
+  @extend .btn-group-vertical;
+  .ol-zoom-in, .ol-zoom-out {
+    @extend .btn;
+    @extend .btn-primary;
+  }
+}
+
+.ol3-geocoder-container {
+  top: 1em;
+}
+
+.ol3-geocoder-btn-search {
+  @extend .btn;
+  @extend .btn-primary;
+}
+
+.bottombar {
+  position: absolute;
+  z-index: 4;
+  top: auto;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: #885B9D;
+  color: white;
+  padding: 1px;
+  text-align: center;
+  font-size: $font-size-small;
+}
+
+.gpxtool {
+  position: absolute;
+  top: auto;
+  left: auto;
+  right: 4em;
+  bottom: 2em;
+  color: red;
+  padding: 3px;
+  font-size: small;
+  font-style: italic;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.vikailmoitus {
+  position: absolute;
+  bottom: auto;
+  right: auto;
+  left: 10em;
+  top: 0.1em;
+  color: red;
+  padding: 3px;
+  font-size: small;
+  background-color: #ffffff;
+  text-decoration: none;
+}
+
+/*.prntool { position: absolute; right: .5em;	bottom:	auto; top: 8.5em; left: auto;	z-index: 2; width: 32px; height: 32px; background-image: url("img/print.png"); }*/
+
+.map-navigation {
+    position: absolute;
+    top: 4em;
+    left: 1em;
+    right: auto;
+    bottom: auto;
+    z-index: 5;
+
+  .switcher {
+    @extend .btn;
+    @extend .btn-primary;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .pyorailyswitcher {
+  }
+
+  .icon-cycling {
+    @extend .glyphicon;
+    @extend .glyphicon-dashboard;
+  }
+
+  .ulkoiluswitcher {
+  }
+
+  .icon-outdoor {
+    @extend .glyphicon;
+    @extend .glyphicon-tree-conifer;
+  }
+}
+
+.ol-control button {
+  background-color: rgba(0, 127, 255, 0.85);
+  //border-radius: 50% !important;
+}
+
+.ol-control button:focus {
+  //transform: scale(.9);
+  //background-color: rgba(255, 51, 153, 0.85) !important;
+}
+
+.ol-attribution {
+  text-align: left;
+  max-width: calc(100% - 5em)
+}
+
+.ol-popup {
+  position: absolute;
+  min-width: 140px;
+  background-color: white;
+  -webkit-filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+  padding: 3px;
+  border-radius: 10px;
+  border: 3px solid #ccc;
+  bottom: 5px;
+  left: -50px;
+
+  &:before,
+  &:after{
+    top: 100%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+  }
+
+  :before {
+    border-top-color: #cccccc;
+    border-width: 11px;
+    left: 48px;
+    margin-left: -11px;
+  }
+
+  &:after {
+    border-top-color: white;
+    border-width: 10px;
+    left: 48px;
+    margin-left: -10px;
+  }
+}
+
+.ol-popup-closer {
+  text-decoration: none;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+
+  &:after {
+    //content: url(data:image/gif;base64,R0lGODlhEAAQAMQcACVCgSVDhCtOmSxPmyhIjSM/eyM/fSZEhSM/fC1Rni1RnyRBgCdHiytNmCVDgypMlihIjixPnCtNlypMlSlLkydGiilKkSlKkCRBfyZFiCZEhv///wAAAAAAAAAAAAAAACH5BAEAABwALAAAAAAQABAAAAVxIAddFjU9UiMMUZQoCkOM5Zmu7VvJtImqLFdmNyP5bqyEZsjYbIwTJzCiWVacTwsWGThkhlisTeXoWsO1H6C8zIShqMW6G3bCMZg1Fmyv4eVOVXw9CAZ4c4JENAWFh2xWPBcFjIZ5j0wzHJONlmZMHCEAOw==);
+  }
+}
+
+.notification {
+  position: fixed;
+  z-index: 500;
+  bottom: 60px;
+  width: 100%;
+  text-align: center;
+  .notification-content {
+    background: #fff;
+    padding: 1em;
+    max-width: 300px;
+    margin: 0 auto;
+    display: none;
+  }
+}

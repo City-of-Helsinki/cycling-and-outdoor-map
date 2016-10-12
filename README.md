@@ -1,7 +1,19 @@
-# cycling-and-outdoor-map
-Helsinki Metropolitan Cycling and Outdoor Map
+# Helsinki Metropolitan Cycling and Outdoor Map
 
-Run the development server with
+### Installing
+Clone the repo & install depencies with
+```bash
+npm install
+```
 
-  php -S localhost:8000
-  
+### Developing
+Run webpack-dev-server & start watching changes with
+```bash
+npm start
+```
+
+### Distribution
+Compile the project (compiles to `/public`) & minify assets with
+```bash
+npm run build
+```
