@@ -60,8 +60,8 @@
 }
 
 .ol-zoom {
-  top: .5em;
-  left: .5em
+  //top: .5em;
+  //left: .5em
 }
 
 .ol-rotate {
@@ -93,20 +93,20 @@
 }
 
 .ol-control button {
-  display: block;
-  margin: 1px;
-  padding: 0;
-  color: #fff;
-  font-size: 1.14em;
-  font-weight: 700;
-  text-decoration: none;
-  text-align: center;
-  height: 1.375em;
-  width: 1.375em;
-  line-height: .4em;
-  background-color: rgba(0, 60, 136, .5);
-  border: none;
-  border-radius: 2px
+ // display: block;
+  //margin: 1px;
+  //padding: 0;
+  //color: #fff;
+  //font-size: 1.14em;
+  //font-weight: 700;
+  //text-decoration: none;
+  //text-align: center;
+  //height: 1.375em;
+  //width: 1.375em;
+  //line-height: .4em;
+  //background-color: rgba(0, 60, 136, .5);
+  //border: none;
+  //border-radius: 2px
 }
 
 .ol-control button::-moz-focus-inner {
@@ -139,11 +139,11 @@
 }
 
 .ol-zoom .ol-zoom-in {
-  border-radius: 2px 2px 0 0
+  //border-radius: 2px 2px 0 0
 }
 
 .ol-zoom .ol-zoom-out {
-  border-radius: 0 0 2px 2px
+  //border-radius: 0 0 2px 2px
 }
 
 .ol-attribution {

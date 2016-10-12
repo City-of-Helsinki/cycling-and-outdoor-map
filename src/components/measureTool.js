@@ -13,12 +13,12 @@ var sketch;
  * The help tooltip element.
  * @type {Element}
  */
-var helpTooltipElement;
+//var helpTooltipElement;
 /**
  * Overlay to show the help messages.
  * @type {ol.Overlay}
  */
-var helpTooltip;
+//var helpTooltip;
 /**
  * The measure tooltip element.
  * @type {Element}
@@ -33,7 +33,7 @@ var measureTooltip;
  * Message to show when the user is drawing a line.
  * @type {string}
  */
-var continueLineMsg = 'Anna seuraava mittauspiste, tuplaklikki lopettaa mittauksen';
+var continueLineMsg = 'Anna seuraava mittauspiste, tuplaklikkaus lopettaa mittauksen';
 /**
  * Handle pointer move.
  * @param {ol.MapBrowserEvent} evt The event.
@@ -62,32 +62,45 @@ var vector = new ol.layer.Vector({
 
 Map.addLayer(vector);
 
+var showPrompt = function(contents) {
+  if (contents !== '') {
+    $('#notification-area .notification-content').show('fast');
+  } else {
+    $('#notification-area .notification-content').hide('fast');
+  }
+  $('.notification-text').html(contents);
+};
+
 var pointerMoveHandler = function(evt) {
 
   if (!measuringEnabled) {
     var helpMsg = '';
-    helpTooltipElement.innerHTML = helpMsg;
+    //helpTooltipElement.innerHTML = helpMsg;
+    showPrompt(helpMsg);
     return;
   }
   if (evt.dragging) {
     return;
   }
   /** @type {string} */
-  helpMsg = 'Klikkaa uusi matkanmittaus käyntiin';
+  helpMsg = 'Aloita mittaus klikkaamalla reitille aloituspiste';
 
   if (sketch) {
     helpMsg = continueLineMsg;
   }
 
-  helpTooltipElement.innerHTML = helpMsg;
-  helpTooltip.setPosition(evt.coordinate);
+  //helpTooltipElement.innerHTML = helpMsg;
+  showPrompt(helpMsg);
+  //helpTooltip.setPosition(evt.coordinate);
 
-  helpTooltipElement.classList.remove('hidden');
+  //helpTooltipElement.classList.remove('hidden');
 };
 
+/*
 Map.getViewport().addEventListener('mouseout', function() {
   helpTooltipElement.classList.add('hidden');
 });
+*/
 Map.on('pointermove', pointerMoveHandler);
 
 var draw; // global so we can remove it later
@@ -116,7 +129,7 @@ var formatLength = function(line) {
 
 /**
  * Creates a new help tooltip
- */
+ 
 function createHelpTooltip() {
   if (helpTooltipElement) {
     helpTooltipElement.parentNode.removeChild(helpTooltipElement);
@@ -130,6 +143,8 @@ function createHelpTooltip() {
   });
   Map.addOverlay(helpTooltip);
 }
+*/
+
 /**
  * Creates a new measure tooltip
  */
@@ -159,23 +174,23 @@ function initInteraction(){
       }),
       stroke: new ol.style.Stroke({
         color: 'rgba(255, 186, 0, 1)',
-        lineDash: [2, 15],
-        width: 10
+        lineDash: [1, 20],
+        width: 7
       }),
       image: new ol.style.Circle({
         radius: 5,
         stroke: new ol.style.Stroke({
-          color: 'rgba(255, 0, 0, 1)'
+          color: 'rgba(255, 186, 0, 1)'
         }),
         fill: new ol.style.Fill({
-          color: 'rgba(255, 0, 0, 1)'
+          color: 'rgba(255, 186, 0, 1)'
         })
       })
     })
   });
 
   createMeasureTooltip();
-  createHelpTooltip();
+  //createHelpTooltip();
 
   var listener;
   var clickListener;
@@ -195,6 +210,7 @@ function initInteraction(){
         tooltipCoord = geom.getLastCoordinate();
         measureTooltipElement.innerHTML = output;
         measureTooltip.setPosition(tooltipCoord);
+        $('#measureDisplay').html(output);
       });
       clickListener = Map.on('click', function(e) {
 
@@ -210,7 +226,7 @@ function initInteraction(){
       /* Matkanmittauksen infoboxin asemointi! */
       measureTooltip.setPosition(northernMost);
       measureTooltipElement.className = 'tooltip tooltip-static';
-      measureTooltip.setOffset([0, -80]);
+      measureTooltip.setOffset([0, -66]);
       // unset sketch
       sketch = null;
       // unset tooltip so that a new one can be created
@@ -230,7 +246,9 @@ export const toggleMeasuring = function() {
   if (!measuringEnabled) {
     measuringEnabled = true;
     Map.addInteraction(draw);
-    document.getElementById('clearButton').style.display = 'inline';
+    $('#map').addClass('is-measuring');
+    $('#clearButton').show();
+    $('#measureDisplay').show();
     $('#measureButton').addClass('active');
     //document.getElementById('measureButton').style.background = 'yellow';
     //document.getElementById('measureButton').innerHTML = 'Lopeta mittaus';
@@ -241,7 +259,9 @@ export const toggleMeasuring = function() {
       draw.finishDrawing();
     }
     Map.removeInteraction(draw);
-    document.getElementById('clearButton').style.display = 'none';
+    $('#map').removeClass('is-measuring');
+    $('#clearButton').hide();
+    $('#measureDisplay').hide();
     $('#measureButton').removeClass('active');
     //document.getElementById('measureButton').style.background = 'lightblue';
     //document.getElementById('measureButton').innerHTML = 'Mittaustyökalu';
@@ -256,6 +276,7 @@ export const clearRoutes = function() {
     console.log('removed');
   }
 
+  $('#measureDisplay').html('');
   source.clear();
 
 };

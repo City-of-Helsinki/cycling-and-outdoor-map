@@ -3,7 +3,10 @@ html, body {
   padding: 0;
   width: 100%;
   height: 100%;
-  font-family: sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 
+    "Segoe UI", "Roboto", "Oxygen", 
+    "Ubuntu", "Cantarell", "Fira Sans", 
+    "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
 .map {
@@ -11,57 +14,90 @@ html, body {
   height: 100%;
 }
 
+.map.is-measuring {
+  cursor: crosshair;
+}
+
 .locateButton {
   position: absolute;
   right: .5em;
-  bottom: auto;
-  top: 6.0em;
+  bottom: 11em;
+  top: auto;
   left: auto;
   z-index: 2;
-  width: 31px;
-  height: 31px;
-  background-image: url("~assets/img/locate.png");
+  padding: 6px;
+  text-align: center;
+  border-radius: 50%;
+  line-height: 42px;
+  width: 42px;
+  height: 42px;
+  @extend .btn;
+  @extend .btn-primary;
+  .locate-icon {
+    @extend .glyphicon;
+    @extend .glyphicon-screenshot;
+    font-size: 24px;
+  }
 }
 
-.measureButton {
+.map-tools {
   position: absolute;
   right: 0.5em;
   bottom: auto;
-  top: 9em;
+  top: 1em;
   left: auto;
   z-index: 2;
+}
+
+.measureButton {
+  min-width: 120px;
   @extend .btn;
   @extend .btn-primary;
 }
 
 .clearButton {
-  position: absolute;
-  right: 0.5em;
-  bottom: auto;
-  top: 12em;
-  left: auto;
-  z-index: 2;
-  padding: 10px 0 0 5px;
-  width: 110px;
-  height: 30px;
-  background: salmon;
-  cursor: pointer;
-  box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.75);
-  border-radius: 6px;
-  border: 1px solid #000000;
+  min-width: 120px;
   display: none;
   //background-image: url("~assets/img/locate.png");
+  @extend .btn;
+  @extend .btn-danger;
+}
+
+.measure-display {
+  @extend .well;
+  @extend .well-sm;
+  display: none;
+  .display-steps {
+    display: block;
+  }
+  .display-distance {
+    display: block;
+  }
 }
 
 .ol-attribution {
-  bottom: 1.2em;
-  z-index: 5;
+  display: none;
 }
 
 .ol-zoom {
-  bottom: .75em;
-  right: .5em;
+  bottom: 4em;
   left: auto;
+  right: .5em;
+  top: auto;
+  @extend .btn-group-vertical;
+  .ol-zoom-in, .ol-zoom-out {
+    @extend .btn;
+    @extend .btn-primary;
+  }
+}
+
+.ol3-geocoder-container {
+  top: 1em;
+}
+
+.ol3-geocoder-btn-search {
+  @extend .btn;
+  @extend .btn-primary;
 }
 
 .bottombar {
@@ -75,7 +111,7 @@ html, body {
   color: white;
   padding: 1px;
   text-align: center;
-  font-size: small;
+  font-size: $font-size-small;
 }
 
 .gpxtool {
@@ -109,19 +145,33 @@ html, body {
 
 .map-navigation {
     position: absolute;
-    top: 1em;
+    top: 4em;
     left: 1em;
     right: auto;
     bottom: auto;
     z-index: 5;
-  .pyorailyswitcher {
+
+  .switcher {
     @extend .btn;
     @extend .btn-primary;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .pyorailyswitcher {
+  }
+
+  .icon-cycling {
+    @extend .glyphicon;
+    @extend .glyphicon-dashboard;
   }
 
   .ulkoiluswitcher {
-    @extend .btn;
-    @extend .btn-primary;
+  }
+
+  .icon-outdoor {
+    @extend .glyphicon;
+    @extend .glyphicon-tree-conifer;
   }
 }
 
@@ -130,9 +180,9 @@ html, body {
   //border-radius: 50% !important;
 }
 
-.ol-control button:hover {
-  transform: scale(.9);
-  background-color: rgba(255, 51, 153, 0.85) !important;
+.ol-control button:focus {
+  //transform: scale(.9);
+  //background-color: rgba(255, 51, 153, 0.85) !important;
 }
 
 .ol-attribution {
@@ -186,5 +236,20 @@ html, body {
 
   &:after {
     //content: url(data:image/gif;base64,R0lGODlhEAAQAMQcACVCgSVDhCtOmSxPmyhIjSM/eyM/fSZEhSM/fC1Rni1RnyRBgCdHiytNmCVDgypMlihIjixPnCtNlypMlSlLkydGiilKkSlKkCRBfyZFiCZEhv///wAAAAAAAAAAAAAAACH5BAEAABwALAAAAAAQABAAAAVxIAddFjU9UiMMUZQoCkOM5Zmu7VvJtImqLFdmNyP5bqyEZsjYbIwTJzCiWVacTwsWGThkhlisTeXoWsO1H6C8zIShqMW6G3bCMZg1Fmyv4eVOVXw9CAZ4c4JENAWFh2xWPBcFjIZ5j0wzHJONlmZMHCEAOw==);
+  }
+}
+
+.notification {
+  position: fixed;
+  z-index: 500;
+  bottom: 60px;
+  width: 100%;
+  text-align: center;
+  .notification-content {
+    background: #fff;
+    padding: 1em;
+    max-width: 300px;
+    margin: 0 auto;
+    display: none;
   }
 }

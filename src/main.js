@@ -89,7 +89,7 @@ if ('download' in exportPNGElement) {
   }, false);
 } else {
   let info = document.getElementById('no-download');
-  info.style.display = '';
+  //info.style.display = '';
 }
 
 /**
@@ -119,7 +119,7 @@ if ('download' in exportGPXElement) {
   }, false);
 } else {
   let info = document.getElementById('no-download');
-  info.style.display = 'Valitettavasti gpx-tuonti ei toimi selaimessasi';
+  //info.style.display = 'Valitettavasti gpx-tuonti ei toimi selaimessasi';
 }
 
 /**
@@ -169,6 +169,9 @@ window.clearRoutes = clearRoutes;
 //Updates map size to correct after rendering
 setTimeout(function(){ Map.updateSize(); }, 100);
 
+$('#measureButton').click(toggleMeasuring);
+
 $('.switcher').click(function() {
-  $('.switcher').toggleClass('active');
+  $('.switcher').removeClass('active');
+  $(this).addClass('active');
 });

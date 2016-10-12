@@ -11,31 +11,33 @@
 
 <div class="map-navigation">
 <div class="switcher pyorailyswitcher active" onclick="layerSwitch('pk',this);">
-  Pyöräilyreitit
+  <span class="icon-cycling"></span> Pyöräilyreitit
 </div>
 
 <div class="switcher ulkoiluswitcher" onclick="layerSwitch('uk',this);">
-  Ulkoilupaikat
+  <span class="icon-outdoor"></span> Ulkoilupaikat
 </div>
 </div>
-  
+
 <div id="popup" class="ol-popup">
   <a href="#" id="popup-closer" class="ol-popup-closer"></a>
   <div id="popup-content"></div>
 </div>
 
-<div class="locateButton" onclick="setGeoLocation()"></div>
+<div class="locateButton" onclick="setGeoLocation()"><span class="locate-icon"></span></div>
 
-<div id="measureButton" class="measureButton" onclick="toggleMeasuring()">Mittaustyökalu</div>
+<div class="map-tools">
+  <div id="measureButton" class="measureButton">Mittaustyökalu</div>
+  <div id="measureDisplay" class="measure-display"><span class="display-steps">0</span><span class="display-distance">0</span></div>
+  <div id="clearButton" class="clearButton" onclick="clearRoutes()">Tyhjennä</div>
+</div>
 
-<div id="clearButton" class="clearButton" onclick="clearRoutes()">Tyhjennä</div>
 <!--
   <div id="search" style="position: absolute; top: .75em; right: 20em; padding: 5px; background-color: rgba(255,255,255,0.5);">
     <input type="text" placeholder="katunimihaku" style="width: 200px">
     <button type="button">Hae</button>
   </div>
 -->
-<div class="vikailmoitus">Mittaustoiminnot ovat toistaiseksi pois käytöstä -Ulkoilukartan ylläpito</div>
 
 <a id="export-gpx" class="gpxtool" download="map.gpx">GPX</a>
 <a id="export-png" class="prntool" download="map.png">PRINT</a>
@@ -46,13 +48,18 @@
   HUVUDSTADSREGIONENS CYKEL- OCH FRILUFTSKARTA
 </div>
 
+<div id="notification-area" class="notification overlay">
+  <div class="notification-content">
+    <a href="#" tabindex="1" class="prompt-button">
+    <span class="notification-text">Aloita matkamittaus klikkaamalla aloituspiste.</span>
+    <span class="close-button icon icon-icon-close"></span></a>
+  </div>
+</div>
+
 <div id="search" class="ol-popup">
   <a href="#" id="popup-closer" class="ol-popup-closer"></a>
   <div id="popup-content"></div>
 </div>
-
-  <div class="">
-  </div>
 
 </body>
 </html>
