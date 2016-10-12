@@ -175,3 +175,7 @@ $('.switcher').click(function() {
   $('.switcher').removeClass('active');
   $(this).addClass('active');
 });
+
+$('#js-notification-close').click(function() {
+  $('#notification-area .notification-content').hide('fast');
+});

@@ -76,7 +76,7 @@ var pointerMoveHandler = function(evt) {
   if (!measuringEnabled) {
     var helpMsg = '';
     //helpTooltipElement.innerHTML = helpMsg;
-    showPrompt(helpMsg);
+    //showPrompt(helpMsg);
     return;
   }
   if (evt.dragging) {
@@ -162,6 +162,14 @@ function createMeasureTooltip() {
   Map.addOverlay(measureTooltip);
 }
 
+function updateMeasureDisplay(newContent) {
+  if (newContent === '') {
+    $('#measureDisplay').html('0 askelta*<br>0 m');
+  } else {
+    $('#measureDisplay').html(newContent);
+  }
+}
+
 function initInteraction(){
 
   var type = ('LineString');
@@ -189,11 +197,11 @@ function initInteraction(){
     })
   });
 
-  createMeasureTooltip();
   //createHelpTooltip();
 
   var listener;
   var clickListener;
+  var measurementsOutput;
   var northernMost = [0, -100000000];
 
   draw.on('drawstart',
@@ -202,15 +210,14 @@ function initInteraction(){
       sketch = evt.feature;
 
       /** @type {ol.Coordinate|undefined} */
-      var tooltipCoord = evt.coordinate;
+      //var tooltipCoord = evt.coordinate;
       listener = sketch.getGeometry().on('change', function(e) {
         var geom = e.target;
-        var output;
-        output = formatLength(geom);
-        tooltipCoord = geom.getLastCoordinate();
-        measureTooltipElement.innerHTML = output;
-        measureTooltip.setPosition(tooltipCoord);
-        $('#measureDisplay').html(output);
+        measurementsOutput = formatLength(geom);
+        //tooltipCoord = geom.getLastCoordinate();
+        //measureTooltipElement.innerHTML = output;
+        //measureTooltip.setPosition(tooltipCoord);
+        updateMeasureDisplay(measurementsOutput);
       });
       clickListener = Map.on('click', function(e) {
 
@@ -223,6 +230,8 @@ function initInteraction(){
 
   draw.on('drawend',
     function() {
+      createMeasureTooltip();
+      measureTooltipElement.innerHTML = measurementsOutput;
       /* Matkanmittauksen infoboxin asemointi! */
       measureTooltip.setPosition(northernMost);
       measureTooltipElement.className = 'tooltip tooltip-static';
@@ -235,6 +244,8 @@ function initInteraction(){
       createMeasureTooltip();
       ol.Observable.unByKey(listener);
       ol.Observable.unByKey(clickListener);
+      $('#clearButton').show();
+      updateMeasureDisplay('');
     }, this);
 }
 
@@ -247,7 +258,7 @@ export const toggleMeasuring = function() {
     measuringEnabled = true;
     Map.addInteraction(draw);
     $('#map').addClass('is-measuring');
-    $('#clearButton').show();
+    updateMeasureDisplay('');
     $('#measureDisplay').show();
     $('#measureButton').addClass('active');
     //document.getElementById('measureButton').style.background = 'yellow';
@@ -260,7 +271,6 @@ export const toggleMeasuring = function() {
     }
     Map.removeInteraction(draw);
     $('#map').removeClass('is-measuring');
-    $('#clearButton').hide();
     $('#measureDisplay').hide();
     $('#measureButton').removeClass('active');
     //document.getElementById('measureButton').style.background = 'lightblue';
@@ -276,7 +286,8 @@ export const clearRoutes = function() {
     console.log('removed');
   }
 
-  $('#measureDisplay').html('');
+  updateMeasureDisplay('');
+  $('#clearButton').hide();
   source.clear();
 
 };

@@ -42,7 +42,7 @@ html, body {
 
 .map-tools {
   position: absolute;
-  right: 0.5em;
+  right: 1em;
   bottom: auto;
   top: 1em;
   left: auto;
@@ -51,6 +51,7 @@ html, body {
 
 .measureButton {
   min-width: 120px;
+  margin-bottom: 6px;
   @extend .btn;
   @extend .btn-primary;
 }
@@ -93,6 +94,7 @@ html, body {
 
 .ol3-geocoder-container {
   top: 1em;
+  left: 0.5em;
 }
 
 .ol3-geocoder-btn-search {
@@ -146,7 +148,7 @@ html, body {
 .map-navigation {
     position: absolute;
     top: 4em;
-    left: 1em;
+    left: .5em;
     right: auto;
     bottom: auto;
     z-index: 5;
@@ -243,13 +245,23 @@ html, body {
   position: fixed;
   z-index: 500;
   bottom: 60px;
-  width: 100%;
+  width: 320px;
+  left: 50%;
+  margin-left: -160px;
   text-align: center;
   .notification-content {
+    position: relative;
     background: #fff;
-    padding: 1em;
-    max-width: 300px;
+    border-radius: 4px;
+    padding: 1.5em;
     margin: 0 auto;
-    display: none;
+  }
+  .close-button {
+    position: absolute;
+    right: 6px;
+    top: 6px;
+    //color: #797776;
+    @extend .glyphicon;
+    @extend .glyphicon-remove;
   }
 }
