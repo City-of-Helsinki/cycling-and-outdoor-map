@@ -1,7 +1,9 @@
 /*eslint-disable no-unused-vars, no-new*/
 import 'bootstrap-sass/assets/javascripts/bootstrap.js';
 import ol from 'openlayers';
-import Geocoder from './lib/geocoder';
+// import Geocoder from './lib/geocoder';
+
+import { createGeocoderComponent } from './lib/servicemap-geocoder';
 
 import projection from './components/projection';
 import { Map, layerSwitch } from './components/map';
@@ -140,24 +142,24 @@ if ('download' in exportGPXElement) {
 /**
  * GeoCoder
  */
-const geocoder = new Geocoder('nominatim', {
-  provider: 'kmo',
-  placeholder: 'Etsi katunimellä ...',
-  keepOpen: true,
-  autoComplete: true
-});
+// const geocoder = new Geocoder('nominatim', {
+//   provider: 'kmo',
+//   placeholder: 'Etsi katunimellä ...',
+//   keepOpen: true,
+//   autoComplete: true
+// });
 
-Map.addControl(geocoder);
+Map.addControl(createGeocoderComponent(Map));
 
 /**
  * Listen when an address is chosen
  */
-geocoder.on('addresschosen', function(evt) {
-  var coord = evt.coordinate;
-  var content;
-  content.innerHTML = '<p>' + evt.address.formatted + '</p>';
-  overlay.setPosition(coord);
-});
+// geocoder.on('addresschosen', function(evt) {
+//   var coord = evt.coordinate;
+//   var content;
+//   content.innerHTML = '<p>' + evt.address.formatted + '</p>';
+//   overlay.setPosition(coord);
+// });
 
 /**
  * Popup
