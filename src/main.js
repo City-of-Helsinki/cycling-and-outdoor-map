@@ -195,17 +195,3 @@ $('.is-switcher').click(function() {
 $('#js-notification-close').click(function() {
   $('#notification-area .notification-content').hide('fast');
 });
-
-const A4_PAGE_CONTENT_WIDTH_IN_PORTRAIT = 19;
-
-function adaptPrintedMapStyleToWindow() {
-  const width = A4_PAGE_CONTENT_WIDTH_IN_PORTRAIT = 19;
-  const windowWidth = $(window).width();
-  const windowHeight = $(window).height();
-  const ratio = windowHeight / windowWidth;
-  const css = `width: ${width}cm; height: ${ratio * width}cm;`;
-  $('head #print-map-style').replaceWith(`<style id="print-map-style" type="text/css" media="print">#map {${css}}</style>`);
-}
-
-adaptPrintedMapStyleToWindow();
-$(window).on('resize', adaptPrintedMapStyleToWindow);
