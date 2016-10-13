@@ -171,8 +171,8 @@ setTimeout(function(){ Map.updateSize(); }, 100);
 
 $('#measureButton').click(toggleMeasuring);
 
-$('.switcher').click(function() {
-  $('.switcher').removeClass('active');
+$('.is-switcher').click(function() {
+  $('.is-switcher').removeClass('active');
   $(this).addClass('active');
 });
 

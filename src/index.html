@@ -10,12 +10,17 @@
 <div id="map" class="map"></div>
 
 <div class="map-navigation">
-<div class="switcher pyorailyswitcher active" onclick="layerSwitch('pk',this);">
-  <span class="icon-cycling"></span> Pyöräilyreitit
-</div>
-
-<div class="switcher ulkoiluswitcher" onclick="layerSwitch('uk',this);">
-  <span class="icon-outdoor"></span> Ulkoilupaikat
+  <div class="btn-group pyorailyswitcher is-switcher active" role="group" onclick="layerSwitch('pk',this);">
+    <div class="switcher-icon">&nbsp;</div>
+    <div class="switcher">
+       Pyöräilyreitit
+    </div>
+  </div>
+  <div class="btn-group ulkoiluswitcher is-switcher" role="group">
+    <div class="switcher-icon" onclick="layerSwitch('uk',this);">&nbsp;</div>
+    <div class="switcher" onclick="layerSwitch('uk',this);">
+      Ulkoilupaikat
+    </div>
 </div>
 </div>
 

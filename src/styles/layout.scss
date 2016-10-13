@@ -156,25 +156,39 @@ html, body {
   .switcher {
     @extend .btn;
     @extend .btn-primary;
-    display: block;
     margin-bottom: 6px;
   }
 
-  .pyorailyswitcher {
+  .is-switcher.active > .switcher {
+    @extend .active;
   }
 
-  .icon-cycling {
-    @extend .glyphicon;
-    @extend .glyphicon-dashboard;
+  .switcher-icon {
+    @extend .btn;
+    //@extend .btn-warning;
+    width: 36px;
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
   }
+
+  .pyorailyswitcher {
+    display: block;
+    .switcher-icon {
+      background-color: #FCBC19;
+      background-image: url("~assets/img/Bicycle2white.svg");
+    }
+  }
+
 
   .ulkoiluswitcher {
+    display: block;
+    .switcher-icon {
+      background-color: #885B9D;
+      background-image: url("~assets/img/Walker2white.svg");
+    }
   }
 
-  .icon-outdoor {
-    @extend .glyphicon;
-    @extend .glyphicon-tree-conifer;
-  }
 }
 
 .ol-control button {
