@@ -327,3 +327,9 @@ html, body {
 .modal-backdrop {
   z-index: 1999;
 }
+
+#geocoder-component {
+  position: absolute;
+  left: 10px;
+  top: 200px;
+}
