@@ -74,6 +74,15 @@ layerSwitch('pk');
 // Expose to window
 window.layerSwitch = layerSwitch;
 
+function dataURLtoBlob(dataurl) {
+  var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+    bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+  while (n--) {
+    u8arr[n] = bstr.charCodeAt(n);
+  }
+  return new Blob([u8arr], { type: mime });
+}
+
 /**
  * Export png
  * @type {Element}
@@ -84,7 +93,13 @@ if ('download' in exportPNGElement) {
   exportPNGElement.addEventListener('click', function() {
     Map.once('postcompose', function(event) {
       let canvas = event.context.canvas;
-      exportPNGElement.href = canvas.toDataURL('image/png');
+      var imgData = canvas.toDataURL({
+        format: 'png',
+        multiplier: 4 });
+      var blob = dataURLtoBlob(imgData);
+      var objurl = URL.createObjectURL(blob);
+      exportPNGElement.download = 'helloWorld.png';
+      exportPNGElement.href = objurl;
     });
     Map.renderSync();
   }, false);
