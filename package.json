@@ -23,9 +23,10 @@
   },
   "homepage": "https://github.com/City-of-Helsinki/cycling-and-outdoor-map#readme",
   "dependencies": {
+    "bootstrap-sass": "^3.3.7",
+    "jquery": "^2.2.4",
     "openlayers": "^3.18.2",
-    "proj4": "^2.3.15",
-    "jquery": "^2.2.3"
+    "proj4": "^2.3.15"
   },
   "devDependencies": {
     "autoprefixer": "^6.4.1",

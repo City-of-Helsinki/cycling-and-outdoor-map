@@ -1,5 +1,4 @@
-$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
-@import "~bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "styles/vendor/bootstrap-custom";
 @import "styles/vendor/openlayers";
 @import "styles/vendor/geocoder";
 @import "styles/measure";
