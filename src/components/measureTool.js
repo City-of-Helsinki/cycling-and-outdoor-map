@@ -230,7 +230,6 @@ function initInteraction(){
         if (e.coordinate[1] > northernMost[1]) {
           northernMost = e.coordinate;
         }
-        console.log(northernMost);
       });
     }, this);
 
