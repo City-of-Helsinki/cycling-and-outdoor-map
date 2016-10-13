@@ -3,10 +3,9 @@ import 'bootstrap-sass/assets/javascripts/bootstrap.js';
 import ol from 'openlayers';
 import Geocoder from './lib/geocoder';
 
-import distanceCalculator from './components/distanceCalculator';
 import projection from './components/projection';
 import { Map, layerSwitch } from './components/map';
-import { toggleMeasuring, clearRoutes } from './components/measureTool';
+import { toggleMeasuring, clearRoutes, measureVector } from './components/measureTool';
 import { setGeoLocation } from './components/geolocator';
 
 //import walkImg from 'assets/img/walk32.png';
@@ -115,7 +114,7 @@ if ('download' in exportPNGElement) {
 var exportGPXElement = document.getElementById('export-gpx');
 
 if ('download' in exportGPXElement) {
-  let vectorSource = (distanceCalculator.getSource());
+  let vectorSource = (measureVector.getSource());
   exportGPXElement.addEventListener('click', function() {
     if (!exportGPXElement.href) {
       let features = [];
@@ -125,8 +124,8 @@ if ('download' in exportGPXElement) {
         features.push(clone);
       });
       let node = new ol.format.GPX().writeFeatures(features);
-      let fixgpx = node.replace(/\s/g, '');
-      fixgpx = fixgpx.replace(/gpxxmlns/g, 'gpx xmlns');
+      // TODO: are these fixes really necessary?
+      let fixgpx = node.replace(/gpxxmlns/g, 'gpx xmlns');
       fixgpx = fixgpx.replace(/rteptlat/g, 'rtept lat');
       fixgpx = fixgpx.replace(/lon=/g, ' lon=');
       let base64 = window.btoa(unescape(encodeURIComponent(fixgpx)));

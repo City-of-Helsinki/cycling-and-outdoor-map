@@ -41,7 +41,7 @@ var continueLineMsg = 'Anna seuraava mittauspiste, tuplaklikkaus lopettaa mittau
 
 var source = new ol.source.Vector();
 
-var vector = new ol.layer.Vector({
+export var measureVector = new ol.layer.Vector({
   source: source,
   style: new ol.style.Style({
     fill: new ol.style.Fill({
@@ -60,7 +60,7 @@ var vector = new ol.layer.Vector({
   })
 });
 
-Map.addLayer(vector);
+Map.addLayer(measureVector);
 
 var showPrompt = function(contents) {
   if (contents !== '') {
