@@ -12,30 +12,51 @@ html, body {
 .map {
   width: 100%;
   height: 100%;
+  background-color: $gray-lighter;
 }
 
 .map.is-measuring {
   cursor: crosshair;
 }
 
-.locateButton {
+.map-extras {
   position: absolute;
   right: .5em;
-  bottom: 11em;
+  bottom: 15em;
   top: auto;
   left: auto;
-  z-index: 2;
+  z-index: 1102;
+  width: 38px;
+  @media (min-width: $screen-sm-min) {
+    bottom: 10.5em;
+  }
+}
+
+.dropdown-button {
+  position: relative;
+  &.open .toolsButton {
+    @extend .active;
+  }
+}
+
+.locateButton, .toolsButton {
   padding: 6px;
   text-align: center;
   border-radius: 50%;
-  line-height: 42px;
-  width: 42px;
-  height: 42px;
+  line-height: 38px;
+  width: 38px;
+  height: 38px;
+  margin-bottom: 6px;
   @extend .btn;
   @extend .btn-primary;
   .locate-icon {
     @extend .glyphicon;
     @extend .glyphicon-screenshot;
+    font-size: 24px;
+  }
+  .tools-icon {
+    @extend .glyphicon;
+    @extend .glyphicon-wrench;
     font-size: 24px;
   }
 }
@@ -46,7 +67,7 @@ html, body {
   bottom: auto;
   top: 1em;
   left: auto;
-  z-index: 2;
+  z-index: 1100;
 }
 
 .measureButton {
@@ -67,6 +88,7 @@ html, body {
 .measure-display {
   @extend .well;
   @extend .well-sm;
+  margin-bottom: 6px;
   display: none;
   .display-steps {
     display: block;
@@ -81,7 +103,7 @@ html, body {
 }
 
 .ol-zoom {
-  bottom: 4em;
+  bottom: 8em;
   left: auto;
   right: .5em;
   top: auto;
@@ -89,6 +111,10 @@ html, body {
   .ol-zoom-in, .ol-zoom-out {
     @extend .btn;
     @extend .btn-primary;
+  }
+
+  @media (min-width: $screen-sm-min) {
+    bottom: 4em;
   }
 }
 
@@ -104,7 +130,7 @@ html, body {
 
 .bottombar {
   position: absolute;
-  z-index: 4;
+  z-index: 1090;
   top: auto;
   left: 0px;
   right: 0px;
@@ -151,12 +177,16 @@ html, body {
     left: .5em;
     right: auto;
     bottom: auto;
-    z-index: 5;
+    z-index: 1200;
 
   .switcher {
     @extend .btn;
     @extend .btn-primary;
-    margin-bottom: 6px;
+  }
+
+  .is-switcher.active > .switcher-icon {
+    background-image: inherit;
+    @extend .active;
   }
 
   .is-switcher.active > .switcher {
@@ -170,21 +200,36 @@ html, body {
     background-size: 80%;
     background-position: center;
     background-repeat: no-repeat;
+
+    @media (max-width: $screen-xs-max) {
+      border-top-right-radius: 4px !important;
+      border-bottom-right-radius: 4px !important;
+    }
   }
 
   .pyorailyswitcher {
+    @extend .clearfix;
     display: block;
+    margin-bottom: 6px;
     .switcher-icon {
       background-color: #FCBC19;
+      background-image: url("~assets/img/Bicycle2white.svg");
+    }
+    &.active .switcher-icon {
       background-image: url("~assets/img/Bicycle2white.svg");
     }
   }
 
 
   .ulkoiluswitcher {
+    @extend .clearfix;
     display: block;
+    margin-bottom: 6px;
     .switcher-icon {
       background-color: #885B9D;
+      background-image: url("~assets/img/Walker2white.svg");
+    }
+    &.active .switcher-icon {
       background-image: url("~assets/img/Walker2white.svg");
     }
   }
@@ -257,7 +302,7 @@ html, body {
 
 .notification {
   position: fixed;
-  z-index: 500;
+  z-index: 1860;
   bottom: 60px;
   width: 320px;
   left: 50%;
@@ -265,10 +310,8 @@ html, body {
   text-align: center;
   .notification-content {
     position: relative;
-    background: #fff;
-    border-radius: 4px;
-    padding: 1.5em;
-    margin: 0 auto;
+    @extend .panel;
+    @extend .panel-default;
   }
   .close-button {
     position: absolute;
@@ -278,4 +321,12 @@ html, body {
     @extend .glyphicon;
     @extend .glyphicon-remove;
   }
+}
+
+.modal {
+  z-index: 2000;
+}
+
+.modal-backdrop {
+  z-index: 1999;
 }

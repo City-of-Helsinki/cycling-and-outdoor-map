@@ -1,4 +1,5 @@
 /*eslint-disable no-unused-vars, no-new*/
+import 'bootstrap-sass/assets/javascripts/bootstrap.js';
 import ol from 'openlayers';
 import Geocoder from './lib/geocoder';
 
