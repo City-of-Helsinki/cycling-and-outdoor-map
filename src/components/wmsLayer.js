@@ -13,7 +13,7 @@ const wmsLayer = (layername, name, style, type) => {
     extent: extent,
     serverType: 'geoserver',
     source: new ol.source.TileWMS({
-      url: 'http://137.163.136.4:8080/geoserver/wms',
+      url: '/wms',
       attributions: false,
       params: {
         'LAYERS': layername,
