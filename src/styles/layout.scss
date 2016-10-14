@@ -334,6 +334,13 @@ html, body {
   z-index: 1999;
 }
 
+.modal-dialog {
+  @media (min-width: $screen-sm-min) {
+    width: inherit;
+    max-width: 768px;
+  }
+}
+
 #geocoder-component {
   position: absolute;
   left: 10px;
