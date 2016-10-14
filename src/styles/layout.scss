@@ -125,6 +125,11 @@ html, body {
   @extend .btn-primary;
 }
 
+.ol3-geocoder-input-search {
+  @extend .form-control;
+  width: 185px;
+}
+
 .bottombar {
   position: absolute;
   z-index: 1090;
@@ -179,6 +184,7 @@ html, body {
   .switcher {
     @extend .btn;
     @extend .btn-primary;
+    width: 150px;
   }
 
   .is-switcher.active > .switcher-icon {
