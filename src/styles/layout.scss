@@ -84,12 +84,19 @@ html, body {
 .measure-display {
   @extend .well;
   @extend .well-sm;
-  color: $brand-warning;
+  color: #fff;
   margin-bottom: 6px;
   display: none;
+  font-size: 120%;
+
+  .measure-value {
+    font-weight: bold;
+  }
+
   .display-steps {
     display: block;
   }
+
   .display-distance {
     display: block;
   }
@@ -181,18 +188,8 @@ html, body {
     bottom: auto;
     z-index: 1200;
 
-  .switcher {
-    @extend .btn;
-    @extend .btn-primary;
-    width: 150px;
-  }
-
   .is-switcher.active > .switcher-icon {
     background-image: inherit;
-    @extend .active;
-  }
-
-  .is-switcher.active > .switcher {
     @extend .active;
   }
 
@@ -214,8 +211,14 @@ html, body {
     @extend .clearfix;
     display: block;
     margin-bottom: 6px;
+    .switcher {
+      @extend .btn;
+      @extend .btn-danger;
+      font-weight: bold;
+      width: 150px;
+    }
     .switcher-icon {
-      background-color: #FCBC19;
+      background-color: $bicycle-brand;
       background-image: url("~assets/img/Bicycle2white.svg");
     }
     &.active .switcher-icon {
@@ -228,12 +231,25 @@ html, body {
     @extend .clearfix;
     display: block;
     margin-bottom: 6px;
+    .switcher {
+      @extend .btn;
+      @extend .btn-info;
+      font-weight: bold;
+      width: 150px;
+    }
     .switcher-icon {
-      background-color: #885B9D;
+      background-color: $brand-info;
       background-image: url("~assets/img/Walker2white.svg");
     }
     &.active .switcher-icon {
       background-image: url("~assets/img/Walker2white.svg");
+    }
+  }
+
+  .pyorailyswitcher, .ulkoiluswitcher {
+    @extend .btn-group;
+    &.active .switcher {
+      @extend .active;
     }
   }
 
@@ -311,11 +327,20 @@ html, body {
   left: 50%;
   margin-left: -160px;
   text-align: center;
+
   .notification-content {
     position: relative;
     @extend .panel;
     @extend .panel-default;
+    background-color: rgba($bicycle-brand, .75);
+    border-radius: 12px;
+    border: 3px solid #fff;
   }
+
+  h2 {
+    margin: $line-height-computed 0;
+  }
+
   .close-button {
     position: absolute;
     right: 6px;

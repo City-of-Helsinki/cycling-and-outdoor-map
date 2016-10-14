@@ -10,16 +10,16 @@
 <div id="map" class="map"></div>
 
 <div class="map-navigation">
-  <div class="btn-group pyorailyswitcher is-switcher active" role="group" onclick="layerSwitch('pk',this);">
+  <div class="pyorailyswitcher is-switcher active" role="group" onclick="layerSwitch('pk',this);">
     <div class="switcher-icon">&nbsp;</div>
     <div class="switcher hidden-xs">
-       Pyöräilyreitit
+       Pyöräilykartta
     </div>
   </div>
-  <div class="btn-group ulkoiluswitcher is-switcher" role="group">
+  <div class="ulkoiluswitcher is-switcher" role="group">
     <div class="switcher-icon" onclick="layerSwitch('uk',this);">&nbsp;</div>
     <div class="switcher hidden-xs" onclick="layerSwitch('uk',this);">
-      Ulkoilupaikat
+      Ulkoilukartta
     </div>
 </div>
 </div>
@@ -43,7 +43,7 @@
 </div>
 
 <div class="map-tools">
-  <div id="measureButton" class="measureButton">Mittaustyökalu</div>
+  <div id="measureButton" class="measureButton">Matkan mittaus</div>
   <div id="measureDisplay" class="measure-display"><span class="display-steps">0</span><span class="display-distance">0</span></div>
   <div id="clearButton" class="clearButton" onclick="clearRoutes()">Tyhjennä</div>
 </div>
@@ -63,7 +63,7 @@
 
 <div id="notification-area" class="notification overlay hidden-xs">
   <div class="notification-content">
-    <div class="panel-body notification-text">Pyörät pyörimään! Tähän introteksti karttapalvelusta.</div>
+    <div class="panel-body notification-text"><h2>Pistä pyörät pyörimään!</h2></div>
     <span id="js-notification-close" class="close-button icon icon-icon-close"></span>
   </div>
 </div>
