@@ -27,6 +27,10 @@ module.exports = merge(webpackBase, {
       compressor: {
         warnings: true
       }
+    }),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery"
     })
   ]
 });
