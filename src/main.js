@@ -196,3 +196,9 @@ $('.is-switcher').click(function() {
 $('#js-notification-close').click(function() {
   $('#notification-area .notification-content').hide('fast');
 });
+
+const loadingStyle = document.getElementById('loading-style');
+if (loadingStyle !== null) {
+  let parentNode = loadingStyle.parentNode;
+  parentNode.removeChild(loadingStyle);
+}
