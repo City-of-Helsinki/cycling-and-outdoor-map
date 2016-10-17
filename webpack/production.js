@@ -6,7 +6,12 @@ var WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 
 var webpackBase = require('./webpack.base.js');
 
+const PUBLIC_PATH = process.env.PUBLIC_PATH;
+
 module.exports = merge(webpackBase, {
+  output: {
+    publicPath: PUBLIC_PATH || '/'
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': '"production"'
