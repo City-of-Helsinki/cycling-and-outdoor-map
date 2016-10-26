@@ -15,29 +15,36 @@
 }
 
 .tooltip-static {
-  background-color: rgba($bicycle-brand, .66);
+  background-color: rgba($bicycle-brand, .5);
   color: #550080;
   border: 3px solid white;
-  padding: .5em;
+  padding: 10px;
   vertical-align: middle;
   //background-image: url("~assets/img/steps-bike.png");
   //background-position: center;
   //background-repeat: no-repeat;
   opacity: 0.85;
-  filter: alpha(opacity=85);
+  //filter: alpha(opacity=85);
   word-wrap: normal;
-  border-radius: 12px;
+  border-radius: 16px;
   .measure-set {
     border-bottom: solid 2px #550080;
+    padding-bottom: 3px;
   }
   .measure-set:last-child {
     border-bottom: 0;
   }
   .measure-value {
     font-size: 2em;
+    display: block;
     font-weight: bold;
+    line-height: 1;
+    letter-spacing: -1px;
   }
   .measure-unit {
+    display: block;
+    text-align: right;
+    line-height: 1;
   }
 }
 

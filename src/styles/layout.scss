@@ -84,10 +84,12 @@ html, body {
 .measure-display {
   @extend .well;
   @extend .well-sm;
-  color: #fff;
+  background: rgba($bicycle-brand,.5);
+  color: $brand-info;
+  border: 2px solid #fff;
   margin-bottom: 6px;
   display: none;
-  font-size: 120%;
+  font-size: 110%;
 
   .measure-value {
     font-weight: bold;
@@ -99,6 +101,10 @@ html, body {
 
   .display-distance {
     display: block;
+  }
+
+  .measure--meters {
+    border-bottom: 2px solid $brand-info;
   }
 }
 
@@ -134,7 +140,7 @@ html, body {
 
 .ol3-geocoder-input-search {
   @extend .form-control;
-  width: 185px;
+  width: 165px;
 }
 
 .bottombar {
@@ -215,7 +221,7 @@ html, body {
       @extend .btn;
       @extend .btn-danger;
       font-weight: bold;
-      width: 150px;
+      width: 130px;
     }
     .switcher-icon {
       background-color: $bicycle-brand;
@@ -235,7 +241,7 @@ html, body {
       @extend .btn;
       @extend .btn-info;
       font-weight: bold;
-      width: 150px;
+      width: 130px;
     }
     .switcher-icon {
       background-color: $brand-info;
@@ -323,7 +329,7 @@ html, body {
   position: fixed;
   z-index: 1860;
   bottom: 60px;
-  width: 320px;
+  width: 280px;
   left: 50%;
   margin-left: -160px;
   text-align: center;
@@ -333,8 +339,10 @@ html, body {
     @extend .panel;
     @extend .panel-default;
     background-color: rgba($bicycle-brand, .75);
-    border-radius: 12px;
+    border-radius: 20px;
     border: 3px solid #fff;
+    color: #fff;
+    text-transform: uppercase;
   }
 
   h2 {
@@ -343,9 +351,9 @@ html, body {
 
   .close-button {
     position: absolute;
-    right: 6px;
-    top: 6px;
-    //color: #797776;
+    right: 10px;
+    top: 10px;
+    color: #fff;
     @extend .glyphicon;
     @extend .glyphicon-remove;
   }
