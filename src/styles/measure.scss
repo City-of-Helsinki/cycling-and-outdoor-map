@@ -9,7 +9,7 @@
 }
 
 .tooltip-measure {
-  opacity: 0.85;
+  //opacity: 0.85;
   /*font-weight: bold;*/
   font-size: small;
 }
@@ -23,7 +23,7 @@
   //background-image: url("~assets/img/steps-bike.png");
   //background-position: center;
   //background-repeat: no-repeat;
-  opacity: 0.85;
+  //opacity: 0.85;
   //filter: alpha(opacity=85);
   word-wrap: normal;
   border-radius: 16px;
@@ -72,13 +72,13 @@
 }
 
 .tooltip-static:after {
-  border-top: 14px solid rgba(0, 0, 0, 0.85); /* Infoboxin nuolikolmion pituus */
+  border-top: 15px solid rgba(0, 0, 0, 0.85); /* Infoboxin nuolikolmion pituus */
   border-right: 5px solid transparent;
   border-left: 5px solid transparent;
   content: "";
   position: absolute;
-  bottom: -14px; /* Infoboxin nuolikolmion asemointi vertikaalisesti */
+  bottom: -15px; /* Infoboxin nuolikolmion asemointi vertikaalisesti */
   margin-left: -5px;
   left: 50%;
-  border-top-color: #ffcc33;
+  border-top-color: rgba($bicycle-brand, .5);
 }
