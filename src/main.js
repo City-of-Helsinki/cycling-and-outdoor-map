@@ -149,17 +149,35 @@ if ('download' in exportGPXElement) {
 //   autoComplete: true
 // });
 
-Map.addControl(createGeocoderComponent(Map));
+const geocoder = createGeocoderComponent();
+Map.addControl(geocoder);
+
+var vectorSource = new ol.source.Vector({ projection });
+var layer = new ol.layer.Vector({
+  source: vectorSource,
+  map: Map,
+  style: [
+    new ol.style.Style({
+      fill: new ol.style.Fill({
+        color: 'rgb(50, 50, 50)'
+      })
+    })]
+});
 
 /**
  * Listen when an address is chosen
  */
-// geocoder.on('addresschosen', function(evt) {
-//   var coord = evt.coordinate;
-//   var content;
-//   content.innerHTML = '<p>' + evt.address.formatted + '</p>';
-//   overlay.setPosition(coord);
-// });
+geocoder.on('addresschosen', function({ coordinates }) {
+  let view = Map.getView();
+
+  var circle = new ol.geom.Circle(coordinates, 20);
+  view.setCenter(coordinates);
+  view.setZoom(10);
+
+  var CircleFeature = new ol.Feature(circle);
+  vectorSource.clear();
+  vectorSource.addFeatures([CircleFeature]);
+});
 
 /**
  * Popup

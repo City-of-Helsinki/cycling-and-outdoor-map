@@ -2,6 +2,8 @@ import _ from 'lodash';
 import ol from 'openlayers';
 //import $ from 'jquery';
 
+var geocoderComponent = null;
+
 const CITIES = [
   { 'fi': 'helsinki', 'sv': 'helsingfors' },
   { 'fi': 'espoo', 'sv': 'esbo' },
@@ -76,7 +78,7 @@ function parseAddressString(addressString) {
   };
 }
 
-export function geocodeAddressString(addressString, map) {
+export function geocodeAddressString(addressString) {
   const address = parseAddressString(addressString);
   if (!address) {
     return;
@@ -97,22 +99,22 @@ export function geocodeAddressString(addressString, map) {
       if (results.length < 1) {
         return;
       }
-      let view = map.getView();
-      view.setCenter(results[0].location.coordinates);
-      view.setZoom(10);
+      const coordinates = results[0].location.coordinates;
+      geocoderComponent.dispatchEvent({
+        type: 'addresschosen',
+        coordinates
+      });
     }
   );
 }
 
-function searchExecuter(map) {
-  return function($event) {
-    if ($event.keyCode !== 13) return;
-    const query = $($event.currentTarget).val();
-    geocodeAddressString(query, map);
-  };
+function searchExecuter($event) {
+  if ($event.keyCode !== 13) return;
+  const query = $($event.currentTarget).val();
+  geocodeAddressString(query);
 }
 
-function createElement(map) {
+function createElement() {
   let element = document.createElement('div');
   element.className = 'ol3-geocoder-container';
   let inputElement = document.createElement('input');
@@ -121,10 +123,11 @@ function createElement(map) {
   inputElement.className = 'ol3-geocoder-input-search';
   inputElement.placeholder = 'Etsi katuosoitteella ...';
   element.appendChild(inputElement);
-  $(inputElement).keyup(searchExecuter(map));
+  $(inputElement).keyup(searchExecuter);
   return element;
 }
 
-export const createGeocoderComponent = (map) => {
-  return new ol.control.Control({ element: createElement(map) });
+export const createGeocoderComponent = () => {
+  geocoderComponent = new ol.control.Control({ element: createElement() });
+  return geocoderComponent;
 };
