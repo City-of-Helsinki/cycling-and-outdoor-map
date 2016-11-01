@@ -220,6 +220,7 @@ html, body {
     .switcher {
       @extend .btn;
       @extend .btn-danger;
+      border-left: 5px solid $brand-danger;
       font-weight: bold;
       width: 130px;
     }
@@ -240,6 +241,7 @@ html, body {
     .switcher {
       @extend .btn;
       @extend .btn-info;
+      border-left: 6px solid $brand-info;
       font-weight: bold;
       width: 130px;
     }
@@ -250,12 +252,16 @@ html, body {
     &.active .switcher-icon {
       background-image: url("~assets/img/Walker2white.svg");
     }
+    &.active {
+      //border: 3px solid $brand-primary;
+    }
   }
 
   .pyorailyswitcher, .ulkoiluswitcher {
     @extend .btn-group;
     &.active .switcher {
-      @extend .active;
+      //@extend .active;
+      border-left: 5px solid $brand-primary;
     }
   }
 
