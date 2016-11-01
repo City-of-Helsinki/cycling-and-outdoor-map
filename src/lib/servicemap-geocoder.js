@@ -65,11 +65,13 @@ function parseAddressString(addressString) {
   const numberIndex = _.findIndex(remainingTokens, (token) => {
     return token.match(NUMBER_PART) !== null;
   });
-  const streetName = remainingTokens.slice(0, numberIndex).join(' ');
-  const number = numericPrefix(remainingTokens[numberIndex]);
-  if (!number) {
-    return null;
+  let streetName;
+  if (numberIndex > 0) {
+    streetName = remainingTokens.slice(0, numberIndex).join(' ');
+  } else {
+    streetName = remainingTokens;
   }
+  const number = numericPrefix(remainingTokens[numberIndex]);
   return {
     street: streetName,
     number,
@@ -91,7 +93,9 @@ export function geocodeAddressString(addressString) {
     query.municipality = address.city;
   }
   query.street = address.street;
-  query.number = address.number;
+  if (address.number) {
+    query.number = address.number;
+  }
   $.get(
     'https://api.hel.fi/servicemap/v1/address/',
     query,
