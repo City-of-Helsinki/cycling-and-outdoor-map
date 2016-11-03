@@ -69,7 +69,7 @@ function parseAddressString(addressString) {
   if (numberIndex > 0) {
     streetName = remainingTokens.slice(0, numberIndex).join(' ');
   } else {
-    streetName = remainingTokens[0];
+    streetName = remainingTokens.join(' ');
   }
   const number = numericPrefix(remainingTokens[numberIndex]);
   return {
