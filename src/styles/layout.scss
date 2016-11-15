@@ -194,8 +194,19 @@ html, body {
     bottom: auto;
     z-index: 1200;
 
+  .switcher {
+    @extend .btn;
+    @extend .btn-primary;
+    width: 150px;
+    border-left: 0;
+  }
+
   .is-switcher.active > .switcher-icon {
     background-image: inherit;
+    @extend .active;
+  }
+
+  .is-switcher.active > .switcher {
     @extend .active;
   }
 
@@ -206,7 +217,6 @@ html, body {
     background-size: 80%;
     background-position: center;
     background-repeat: no-repeat;
-
     @media (max-width: $screen-xs-max) {
       border-top-right-radius: 4px !important;
       border-bottom-right-radius: 4px !important;
@@ -215,15 +225,9 @@ html, body {
 
   .pyorailyswitcher {
     @extend .clearfix;
+    @extend .btn-group;
     display: block;
     margin-bottom: 6px;
-    .switcher {
-      @extend .btn;
-      @extend .btn-danger;
-      border-left: 5px solid $brand-danger;
-      font-weight: bold;
-      width: 130px;
-    }
     .switcher-icon {
       background-color: $bicycle-brand;
       background-image: url("~assets/img/Bicycle2white.svg");
@@ -236,32 +240,15 @@ html, body {
 
   .ulkoiluswitcher {
     @extend .clearfix;
+    @extend .btn-group;
     display: block;
     margin-bottom: 6px;
-    .switcher {
-      @extend .btn;
-      @extend .btn-info;
-      border-left: 6px solid $brand-info;
-      font-weight: bold;
-      width: 130px;
-    }
     .switcher-icon {
-      background-color: $brand-info;
+      background-color: #885B9D;
       background-image: url("~assets/img/Walker2white.svg");
     }
     &.active .switcher-icon {
       background-image: url("~assets/img/Walker2white.svg");
-    }
-    &.active {
-      //border: 3px solid $brand-primary;
-    }
-  }
-
-  .pyorailyswitcher, .ulkoiluswitcher {
-    @extend .btn-group;
-    &.active .switcher {
-      //@extend .active;
-      border-left: 5px solid $brand-primary;
     }
   }
 
@@ -348,7 +335,8 @@ html, body {
     border-radius: 20px;
     border: 3px solid #fff;
     color: #fff;
-    text-transform: uppercase;
+    font-weight: bold;
+    //text-transform: uppercase;
   }
 
   h2 {

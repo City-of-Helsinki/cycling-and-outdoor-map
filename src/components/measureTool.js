@@ -278,6 +278,7 @@ export const toggleMeasuring = function() {
     $('#map').removeClass('is-measuring');
     $('#measureDisplay').hide();
     $('#measureButton').removeClass('active');
+    $('#notification-area .notification-content').hide('fast');
     //document.getElementById('measureButton').style.background = 'lightblue';
     //document.getElementById('measureButton').innerHTML = 'Mittaustyökalu';
   }
