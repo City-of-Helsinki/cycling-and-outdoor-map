@@ -158,8 +158,12 @@ var layer = new ol.layer.Vector({
   map: Map,
   style: [
     new ol.style.Style({
+      stroke: new ol.style.Stroke({
+        color: 'rgba(255, 255, 255, 0.75)',
+        width: 3
+      }),
       fill: new ol.style.Fill({
-        color: 'rgb(50, 50, 50)'
+        color: 'rgba(252,188,25,.75)'
       })
     })]
 });
@@ -170,7 +174,7 @@ var layer = new ol.layer.Vector({
 geocoder.on('addresschosen', function({ coordinates }) {
   let view = Map.getView();
 
-  var circle = new ol.geom.Circle(coordinates, 20);
+  var circle = new ol.geom.Circle(coordinates, 50);
   view.setCenter(coordinates);
   view.setZoom(10);
 
